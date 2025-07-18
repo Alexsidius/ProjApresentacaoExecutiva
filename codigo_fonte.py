@@ -63,9 +63,26 @@ print('Vendas resumo anual')
 print(vendasAno)
 print(vendasAno.info())
 
-vendasAno.plot.bar()
-plt.title("Vendas por Ano")
-plt.xlabel("Ano")
-plt.ylabel("Sales")
-plt.grid(False)
+# Plotando gráfico de barras
+ax = vendasAno.plot(x='Ano', y='Sales', kind='bar', legend=False, color='cornflowerblue')
+
+# Personalizando
+plt.title('Vendas por ano')
+plt.xlabel('Ano vendas')
+plt.ylabel('Total Vendido')
+
+# Adicionando rótulos nas colunas
+for container in ax.containers:
+    ax.bar_label(container, label_type='edge')
+
+plt.tight_layout()
 plt.show()
+
+
+#maneira abaixo deu certo
+# vendasAno.plot.bar()
+# plt.title("Vendas por Ano")
+# plt.xlabel("Ano")
+# plt.ylabel("Sales")
+# plt.grid(False)
+# plt.show()
